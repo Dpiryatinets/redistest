@@ -13,10 +13,13 @@ function createWorker(config, utils) {
   function stopWaitingForMessage() {
     console.log('switching to master mode');
     workerMode = false;
-    return redisSubscriber.quit();
   }
 
   function onMessage(error, data) {
+    if (!data || !data.length) {
+      console.error('got message, but data is empty');
+      return waitForMessage();
+    }
     var message = data[1];
     console.log('handling message: ' + message);
     return eventHandler(message, function onMessageHandled(error, message) {

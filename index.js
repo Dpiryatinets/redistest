@@ -31,8 +31,8 @@ redisSubscriber.get(channels.freeAppId, function onFreeAppId(error, freeAppId) {
   appHealthMonitor.setAppOnline(appId, false, function onAppOnlineSet() {
     redisSubscriber.subscribe(channels.masterElected);
     redisSubscriber.on('message', onMessage.bind({ appId: appId }));
-    worker.waitForMessage();
-    return appWatcher.start();
+    appWatcher.start();
+    return worker.waitForMessage();
   });
 });
 
