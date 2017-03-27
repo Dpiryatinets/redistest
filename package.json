@@ -13,6 +13,7 @@
     "url": "https://github.com/Dpiryatinets/redistest.git"
   },
   "dependencies": {
+    "minimist": "^1.2.0",
     "redis": "^2.7.1"
   }
 }

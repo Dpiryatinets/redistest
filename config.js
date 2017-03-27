@@ -1,4 +1,5 @@
 var config = {
+  parseErrorsCommand: 'getErrors',
   appIdExpireIntervalMs: 1000,
   masterAppExpireIntervalMs: 1000,
   appIdExpireS: 10,
