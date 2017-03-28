@@ -30,7 +30,15 @@ function handleErrorsOrStart() {
 
 function handleErrorsAndExit() {
   return redisSubscriber.lrange(channels.errors, 0, -1, function onErrors(error, errorsArray) {
-    return redisPublisher.del(channels.errors, function onErrorsDeleted() {
+    if (error) {
+      var message = 'error occured while getting errors list: ' + error.message || error;
+      throw new Error(message);
+    }
+    return redisPublisher.del(channels.errors, function onErrorsDeleted(error) {
+      if (error) {
+        var message = 'error occured while removing errors list: ' + error.message || error;
+        throw new Error(message);
+      }
       console.log('errors: [ ' + errorsArray.reverse().join(', ') + ' ]');
       return process.exit();
     });
