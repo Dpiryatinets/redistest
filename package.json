@@ -1,5 +1,5 @@
 {
-  "name": "onetwotrip",
+  "name": "redistest",
   "version": "0.0.1",
   "description": "redis test app",
   "main": "index.js",
