@@ -8,7 +8,11 @@ function createMaster(config, utils) {
   function masterJob() {
     var message = getMessage();
     console.log('sending message: ' + message);
-    return redisPublisher.lpush(config.redis.channels.messages, message);
+    return redisPublisher.lpush(config.redis.channels.messages, message, function onSent(error) {
+      if (error) {
+        console.error('error occured while sending message: ' + error.message || error);
+      }
+    });
   }
 
   function getMessage() {

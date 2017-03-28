@@ -11,7 +11,7 @@ function createWorker(config, utils) {
   }
 
   function stopWaitingForMessage() {
-    console.log('switching to master mode');
+    console.log('switching to master mode!');
     workerMode = false;
   }
 

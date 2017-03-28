@@ -70,7 +70,11 @@ function onMasterElected(appId, masterId) {
   if (appId === masterId) {
     console.log('app:' + masterId + ' - I am a master!');
     worker.stopWaitingForMessage();
-    return appHealthMonitor.setAppOnline(appId, true, function onMasterSetOnline() {
+    return appHealthMonitor.setAppOnline(appId, true, function onMasterSetOnline(error) {
+      if (error) {
+        var message = "error occured while setting master online: " + error.message || error;
+        throw new Error(message);
+      }
       return master.startJob();
     });
   }

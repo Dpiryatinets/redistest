@@ -11,12 +11,12 @@ var config = {
       port: 6379,
     },
     channels: {
-      freeAppId: 'onetwotrip:app:id:free',
-      appsOnline: 'onetwotrip:apps:online',
-      appMaster: 'onetwotrip:apps:master',
-      masterElected: 'onetwotrip:apps:master:elected',
-      messages: 'onetwotrip:messages',
-      errors: 'onetwotrip:errors',
+      freeAppId: 'redistest:app:id:free',
+      appsOnline: 'redistest:apps:online',
+      appMaster: 'redistest:apps:master',
+      masterElected: 'redistest:apps:master:elected',
+      messages: 'redistest:messages',
+      errors: 'redistest:errors',
     }
   },
 };
